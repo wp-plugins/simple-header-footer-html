@@ -4,7 +4,7 @@ Tags: https, header, footer, js, css, html
 Donate link: http://seravo.fi/
 Requires at least: 3.8
 Tested up to: 3.9
-Stable tag: 0.95
+Stable tag: 1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
