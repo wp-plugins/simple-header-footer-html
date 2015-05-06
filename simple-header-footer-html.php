@@ -50,10 +50,10 @@ function init_seravo_inject() {
 /**
  * functions for echoing the HTML
  */
-function inject_head_start_html() {  esc_html( get_option('injection_head_start') ); }
-function inject_head_end_html() { esc_html_e( get_option('injection_head_end') ); }
-function inject_footer_start_html() { esc_html_e( get_option('injection_footer_start') ); }
-function inject_footer_end_html() { esc_html_e( get_option('injection_footer_end') ); }
+function inject_head_start_html() {  echo  get_option('injection_head_start'); }
+function inject_head_end_html() { echo get_option('injection_head_end'); }
+function inject_footer_start_html() { echo get_option('injection_footer_start'); }
+function inject_footer_end_html() { echo get_option('injection_footer_end'); }
 
 
 function seravo_register_html() {
