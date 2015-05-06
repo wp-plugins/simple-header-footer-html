@@ -1,15 +1,17 @@
 <?php
 
 /*
-Plugin Name: Simple Header Footer HTML
-Description: Allows you to inject HTML code into multiple places in your theme output
-Author: Antti Kuosmanen (Seravo Oy), Otto Kekäläinen (Seravo Oy)
-Version: 1.0
-Author URI: http://seravo.fi
-Text Domain: seravo-inject-html
-License: GPLv3
+  Plugin Name: Simple Header Footer HTML
+  Description: Allows you to inject HTML code into multiple places in your theme output
+  Author: Antti Kuosmanen (Seravo Oy), Otto Kekäläinen (Seravo Oy)
+  Version: 1.1
+  Author URI: http://seravo.fi
+  Text Domain: seravo-inject-html
+  License: GPLv3
 */
-/*  Copyright 2014  Antti Kuosmanen / Seravo Oy
+
+/**
+    Copyright 2015  Antti Kuosmanen / Seravo Oy
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 3, as
@@ -26,10 +28,9 @@ License: GPLv3
 */
 
 
-/*
-* Init the pluginn
-*/
-
+/**
+ * Init the pluginn
+ */
 add_action('init', 'init_seravo_inject');
 function init_seravo_inject() {
 
@@ -46,17 +47,17 @@ function init_seravo_inject() {
 	add_action('admin_init', 'seravo_register_html');
 }
 
-/*
-* functions for echoing the HTML
-*/
-function inject_head_start_html() { echo get_option('injection_head_start'); }
-function inject_head_end_html() { echo get_option('injection_head_end'); }
-function inject_footer_start_html() { echo get_option('injection_footer_start'); }
-function inject_footer_end_html() { echo get_option('injection_footer_end'); }
+/**
+ * functions for echoing the HTML
+ */
+function inject_head_start_html() {  esc_html( get_option('injection_head_start') ); }
+function inject_head_end_html() { esc_html_e( get_option('injection_head_end') ); }
+function inject_footer_start_html() { esc_html_e( get_option('injection_footer_start') ); }
+function inject_footer_end_html() { esc_html_e( get_option('injection_footer_end') ); }
 
 
 function seravo_register_html() {
-	//register our settings
+	// register our settings
 	register_setting('seravo-injects-group', 'injection_head_start');
 	register_setting('seravo-injects-group', 'injection_head_end');
 	register_setting('seravo-injects-group', 'injection_footer_start');
@@ -64,9 +65,9 @@ function seravo_register_html() {
 }
 
 
-/*
-* Registers the option page
-*/
+/**
+ * Registers the option page
+ */
 function seravo_register_options_page() {
 
 	add_options_page(__('Simple Header Footer HTML', 'seravo-inject-html'), __('Header Footer HTML', 'seravo-inject-html'), 'administrator', __FILE__, 'seravo_build_settings_page', plugins_url('/images/icon.png', __FILE__));
@@ -122,10 +123,9 @@ function seravo_build_settings_page() {
     <?php submit_button(); ?>
 
 </form>
-<p><small>Simple Header Footer HTML is made by <a href="http://seravo.fi/">Seravo Oy</a>, which specializes in open source support services and among others is the only company in Finland to provide [WordPress Premium Hosting](http://seravo.fi/wordpress-palvelu).</small></p></div>
+<p><small>Simple Header Footer HTML is made by <a href="http://seravo.fi/">Seravo Oy</a>, known for their WordPress Premium Hosting service [WP-palvelu.fi](https://wp-palvelu.fi) in Finland.</small></p></div>
 
 <?php
 
 }
 
-?>
